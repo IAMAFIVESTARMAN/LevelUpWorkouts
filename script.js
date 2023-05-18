@@ -1,11 +1,29 @@
 console.log("this works ?");
 
-// document.addEventListener("DOMContentLoaded", function () {
-//   document.querySelector("#countries");
-// });
-
-import codes from "./node_modules/country-calling-code/lib/index.js";
+// import codes from "./node_modules/country-calling-code/lib/index.js";
 // import icons
+
+// import { barbellOutline } from "ionicons/icons";
+
+// let html = `<button>Click Me    <ion-icon class="feature-icon" name="barbell-outline"></ion-icon></button>`;
+
+// const el = document.querySelector(".nav-cta");
+
+// el.insertAdjacentHTML("afterbegin", html);
+
+// console.log(el);
+// console.log(add);
+import { codes } from "./countrycodes.js";
+
+document.addEventListener("DOMContentLoaded", function () {
+  const dropDown = document.querySelector("#countries");
+  let output;
+  codes.forEach((el) => {
+    // console.log(el);
+    output += `<option>${el.dial_code}</option>`;
+  });
+  dropDown.insertAdjacentHTML("beforeend", output);
+});
 
 var swiper = new Swiper(".mySwiper", {
   slidesPerView: 1,
@@ -48,4 +66,4 @@ var swiper = new Swiper(".mySwiper", {
 
 // getCountries();
 
-codes.forEach((el) => console.log(el.countryCodes[0]));
+// codes.forEach((el) => console.log(el.countryCodes[0]));
