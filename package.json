@@ -3,7 +3,6 @@
   "dependencies": {
     "core-js": "^3.30.2",
     "country-calling-code": "^0.0.3",
-    "ionicons": "^7.1.0",
     "swiper": "^9.2.4"
   },
   "scripts": {
