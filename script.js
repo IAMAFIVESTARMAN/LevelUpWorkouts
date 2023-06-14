@@ -1,18 +1,51 @@
 console.log("this works ?");
 
-// import codes from "./node_modules/country-calling-code/lib/index.js";
-// import icons
+const slides = document.querySelectorAll(".slide");
+const btnLeft = document.querySelector(".slider-btn-left");
+const btnRight = document.querySelector(".slider-btn-right");
 
-// import { barbellOutline } from "ionicons/icons";
+let currentSlide = 0;
+let maxSlide = slides.length;
 
-// let html = `<button>Click Me    <ion-icon class="feature-icon" name="barbell-outline"></ion-icon></button>`;
+console.log(slides);
 
-// const el = document.querySelector(".nav-cta");
+// const goToSlide = function (slide) {
+//   slides.forEach(
+//     (s, i) => (s.style.transform = `translateX(${(i - slide) * 100}%)`)
+//   );
+// };
 
-// el.insertAdjacentHTML("afterbegin", html);
+function nextSlide() {
+  if (currentSlide === maxSlide - 1) {
+    currentSlide = 0;
+  } else {
+    currentSlide++;
+  }
 
-// console.log(el);
-// console.log(add);
+  slides.forEach(
+    (el, i) => (el.style.transform = `translateX(${(i - currentSlide) * 100}%)`)
+  );
+}
+
+function prevSlide() {
+  if (currentSlide === 0) {
+    currentSlide = maxSlide - 1;
+  } else {
+    currentSlide--;
+  }
+  slides.forEach(
+    (el, i) => (el.style.transform = `translateX(${100 * (i - currentSlide)}%)`)
+  );
+}
+
+btnRight.addEventListener("click", nextSlide);
+
+btnLeft.addEventListener("click", prevSlide);
+
+slides.forEach((el, i) => (el.style.transform = `translateX(${100 * i}%)`));
+
+setInterval(nextSlide, 5000);
+
 import { codes } from "./countrycodes.js";
 
 document.addEventListener("DOMContentLoaded", function () {
@@ -40,30 +73,6 @@ var swiper = new Swiper(".mySwiper", {
   },
 });
 
-// async function getCountries() {
-//   let headers = new Headers();
-
-//   headers.append(
-//     "Access-Control-Allow-Origin",
-//     "http://127.0.0.1:5501/index.html"
-//   );
-//   try {
-//     const res = await fetch("https://api.first.org/data/v1/teams", {
-//       mode: "no-cors",
-//       headers: headers,
-//     });
-//     const data = await res.json();
-//     // console.log(data);
-
-//     // console.log(res);
-//     if (!res.ok) {
-//       throw new Error(`Something went wrong Error code : ${res.status}`);
-//     }
-//   } catch (err) {
-//     console.log(err);
-//   }
+// if (module.hot) {
+//   module.hot.accept();
 // }
-
-// getCountries();
-
-// codes.forEach((el) => console.log(el.countryCodes[0]));
